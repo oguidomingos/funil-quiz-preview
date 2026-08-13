@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico de Prontidão Digital — Pulso</title>
+<meta name="description" content="Seu negócio está pronto pra receber clientes da internet? Descubra em 7 perguntas (1 minuto).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2CB1BC; --teal-dark:#14919B; --navy:#102A43; --navy-2:#243B53;
+  --bg:#F0F4F8; --card:#fff; --muted:#627D98; --border:#D9E2EC;
+  --gold:#F0B429; --red:#E12D39; --green:#199473;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--navy-2);min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:520px;margin:0 auto;padding:1.25rem;flex:1;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column;animation:fadeIn .35s ease}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.brand{text-align:center;padding:.9rem 0 .2rem;font-weight:700;color:var(--navy);letter-spacing:.05em;font-size:.85rem}
+.brand span{color:var(--teal)}
+h1{font-family:"DM Serif Display",serif;color:var(--navy);font-size:1.75rem;line-height:1.2;margin:.8rem 0}
+.sub{color:var(--muted);font-size:1rem;line-height:1.5;margin-bottom:1.4rem}
+.btn{display:block;width:100%;background:var(--teal);color:#fff;border:0;border-radius:12px;
+  padding:1rem 1.2rem;font-size:1.05rem;font-weight:700;font-family:inherit;cursor:pointer;
+  box-shadow:0 4px 14px rgba(44,177,188,.35);transition:transform .12s,background .12s;text-align:center;text-decoration:none}
+.btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.trust{text-align:center;color:var(--muted);font-size:.8rem;margin-top:.9rem}
+/* progress + meter */
+.hud{margin:.6rem 0 1rem}
+.hud-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+.bar{height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--teal-dark));border-radius:99px;transition:width .45s ease}
+.meter{display:flex;align-items:center;gap:.5rem;margin-top:.55rem;font-size:.78rem;color:var(--muted)}
+.meter .shark{font-size:1rem}
+.meter .track{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.meter .track i{display:block;height:100%;width:20%;background:var(--gold);border-radius:99px;transition:width .5s ease,background .5s}
+/* question */
+.qnum{color:var(--teal);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.qtitle{font-size:1.3rem;font-weight:700;color:var(--navy);line-height:1.3;margin:.5rem 0 1.1rem}
+.opts{display:flex;flex-direction:column;gap:.6rem}
+.opt{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:.85rem 1rem;
+  font-size:.98rem;font-weight:500;color:var(--navy-2);cursor:pointer;text-align:left;font-family:inherit;
+  display:flex;align-items:center;gap:.6rem;transition:border-color .12s,transform .12s}
+.opt:hover{border-color:var(--teal);transform:translateY(-1px)}
+.opt.picked{border-color:var(--teal);background:#E6FAFB}
+.back{background:none;border:0;color:var(--muted);font-size:.82rem;margin-top:1rem;cursor:pointer;font-family:inherit;align-self:flex-start}
+/* feedback */
+.feedback{background:var(--navy);color:#D9E2EC;border-radius:12px;padding:.9rem 1.1rem;font-size:.92rem;
+  line-height:1.45;margin-top:.9rem;display:none;animation:fadeIn .3s ease}
+.feedback.show{display:block}
+.feedback b{color:#fff}
+/* form */
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.field input{width:100%;border:2px solid var(--border);border-radius:10px;padding:.85rem 1rem;font-size:1rem;font-family:inherit;background:#fff}
+.field input:focus{outline:none;border-color:var(--teal)}
+.tiny{font-size:.78rem;color:var(--muted);text-align:center;margin-top:.7rem}
+/* calc */
+.calc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.1rem}
+.spinner{width:52px;height:52px;border:5px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.calc p{color:var(--muted)}
+/* result */
+.score-box{background:var(--navy);border-radius:16px;padding:1.4rem;text-align:center;color:#fff;margin-bottom:1.1rem}
+.score-num{font-family:"DM Serif Display",serif;font-size:3.2rem;line-height:1}
+.score-num small{font-size:1.2rem;color:#829AB1}
+.score-label{color:var(--gold);font-weight:700;margin-top:.3rem}
+.score-track{height:8px;background:#334E68;border-radius:99px;margin-top:1rem;overflow:hidden}
+.score-track i{display:block;height:100%;width:0;background:var(--gold);border-radius:99px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.mirror{background:var(--card);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.1rem;font-size:.95rem;line-height:1.55;margin-bottom:.9rem}
+.bridge{font-weight:700;color:var(--navy);font-size:1.05rem;text-align:center;margin:.9rem 0 1.1rem}
+.offers{display:grid;grid-template-columns:1fr;gap:.8rem;margin-bottom:1.1rem}
+@media(min-width:480px){.offers{grid-template-columns:1fr 1fr}}
+.offer{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:1rem;position:relative}
+.offer.hot{border-color:var(--teal);box-shadow:0 4px 18px rgba(44,177,188,.18)}
+.offer .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;
+  font-size:.66rem;font-weight:700;padding:.22rem .6rem;border-radius:99px;white-space:nowrap}
+.offer h3{color:var(--navy);font-size:1rem;margin-bottom:.15rem}
+.offer .price{font-family:"DM Serif Display",serif;font-size:1.6rem;color:var(--navy)}
+.offer .price small{font-size:.8rem;color:var(--muted);font-family:"DM Sans",sans-serif}
+.offer ul{list-style:none;margin-top:.55rem;font-size:.82rem;color:var(--navy-2)}
+.offer li{padding:.16rem 0 .16rem 1.2rem;position:relative}
+.offer li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.proof{text-align:center;color:var(--muted);font-size:.8rem;margin-top:1rem;line-height:1.5}
+.proof a{color:var(--teal)}
+.note{background:#FFF3D6;border:1px solid var(--gold);border-radius:10px;padding:.6rem .9rem;font-size:.75rem;color:#7A5C00;margin:1rem 0 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="brand">P U L S O <span>●</span> SITES</div>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section class="screen active" id="s-intro">
+    <h1>Seu negócio está pronto pra receber clientes da internet?</h1>
+    <p class="sub">Descubra em <b>7 perguntas</b> (leva 1 minuto). No final, você recebe seu
+    <b>Diagnóstico de Prontidão Digital</b> — e um exemplo de site real do seu segmento.</p>
+    <button class="btn" onclick="start()">Começar diagnóstico →</button>
+    <p class="trust">63 sites entregues • resposta na hora • grátis</p>
+    <p class="note">⚠️ PROTÓTIPO DE PREVIEW — nada é enviado; número de WhatsApp do final é placeholder.</p>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen" id="s-quiz">
+    <div class="hud">
+      <div class="hud-label"><span id="qcount"></span><span id="qpct"></span></div>
+      <div class="bar"><i id="qbar"></i></div>
+      <div class="meter"><span class="shark">🦈</span><div class="track"><i id="meterbar"></i></div><span id="meterval">Prontidão: —</span></div>
+    </div>
+    <div>
+      <div class="qnum" id="qnum"></div>
+      <div class="qtitle" id="qtitle"></div>
+      <div class="opts" id="opts"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="back" id="btnBack" onclick="goBack()">← voltar</button>
+    </div>
+  </section>
+
+  <!-- CAPTURE (P7) -->
+  <section class="screen" id="s-capture">
+    <div class="hud">
+      <div class="hud-label"><span>Última etapa</span><span>Diagnóstico 95% pronto</span></div>
+      <div class="bar"><i style="width:95%"></i></div>
+    </div>
+    <h1 style="font-size:1.45rem">Pronto! Seu Diagnóstico de Prontidão Digital foi gerado.</h1>
+    <p class="sub" style="margin-bottom:1rem">Coloca seus dados que a gente te mostra o resultado — e te manda no
+    WhatsApp o link de um <b>site real que fizemos pro seu segmento</b>.</p>
+    <form onsubmit="return submitLead(event)">
+      <div class="field"><label for="f-nome">Seu nome</label><input id="f-nome" required placeholder="Como você quer ser chamado?"></div>
+      <div class="field"><label for="f-zap">Seu WhatsApp</label><input id="f-zap" required inputmode="tel" placeholder="(61) 9 9999-9999"></div>
+      <button class="btn" type="submit">Ver meu diagnóstico →</button>
+    </form>
+    <p class="tiny">Sem spam. Sem ligação chata. Prometido.</p>
+  </section>
+
+  <!-- CALC -->
+  <section class="screen" id="s-calc">
+    <div class="calc">
+      <div class="spinner"></div>
+      <h1 style="font-size:1.3rem">Calculando seu diagnóstico…</h1>
+      <p id="calcmsg">Cruzando suas respostas com 63 sites entregues</p>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="s-result">
+    <div class="score-box">
+      <div class="score-num"><span id="r-score">0</span><small>/100</small></div>
+      <div class="score-label" id="r-label"></div>
+      <div class="score-track"><i id="r-track"></i></div>
+    </div>
+    <div class="mirror" id="r-mirror"></div>
+    <div class="bridge">A boa notícia: isso se resolve em 48 horas.</div>
+    <div class="offers" id="r-offers"></div>
+    <a class="btn" id="r-cta" href="#" target="_blank" rel="noopener">Agendar conversa de 20 min — grátis</a>
+    <p class="trust" id="r-ctasub">Sem compromisso. Você sai da call sabendo o que seu negócio precisa.</p>
+    <p class="proof"><b>63 sites entregues</b> para negócios locais —
+      <a href="https://oguidomingos.github.io/site-paulista/" target="_blank" rel="noopener">Restaurante do Paulista</a> ·
+      <a href="https://oguidomingos.github.io/site-fogo-galpao/" target="_blank" rel="noopener">Fogo do Galpão</a> ·
+      <a href="https://oguidomingos.github.io/site-zezinho/" target="_blank" rel="noopener">Zezinho Carne de Sol</a></p>
+  </section>
+
+</div>
+<script>
+// ---- estado ----
+const A = {};                 // respostas por id de pergunta
+let hist = [];                // histórico p/ voltar
+let flow = [];                // fluxo dinâmico (branching no eixo P2)
+let idx = 0;
+const track = (ev,data)=>console.log('[pixel]',ev,data||'');   // stub Pixel/CAPI
+const esc = s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// ---- perguntas (copy oficial: copy-ofertas.md) ----
+const SEGS = {rest:'restaurante',beleza:'salão/estética',serv:'prestador de serviços',saude:'clínica/consultório',loja:'loja',outro:'negócio'};
+const Q = {
+  q1:{t:'Qual é o seu tipo de negócio?',opts:[
+    ['rest','🍽️ Restaurante / lanchonete'],['beleza','💇 Beleza / estética / barbearia'],
+    ['serv','🔧 Serviços (reforma, assistência…)'],['saude','🏥 Saúde (clínica, consultório)'],
+    ['loja','🛍️ Loja / comércio'],['outro','✏️ Outro']],
+    fb:v=>`Boa. Já entregamos sites pra <b>${SEGS[v]}s</b> — você vai ver um exemplo no final.`},
+  q2:{t:'Hoje, quando alguém pesquisa seu negócio, o que encontra?',opts:[
+    ['nada','Nada — não tenho site'],['insta','Só Instagram / WhatsApp'],
+    ['ruim','Um site velho / que eu mesmo fiz e não gosto'],['bom','Um site bom e atualizado']],
+    fb:v=>({nada:'Você não está sozinho: <b>6 em cada 10</b> negócios locais não têm site. Mas os que têm ficam com o cliente.',
+      insta:'Instagram ajuda — mas perfil não passa a confiança que uma página sua passa. E o <b>algoritmo</b> decide quem te vê.',
+      ruim:'Pior que não ter site é ter um que envergonha. A boa notícia: isso é <b>rápido</b> de resolver.',
+      bom:'Ótimo. Então seu gargalo provavelmente não é o site — é <b>quanta gente chega</b> nele.'}[v])},
+  q3:{t:'Você já investiu em anúncio online (Instagram, Google)?',opts:[
+    ['invisto','Já invisto todo mês'],['parei','Já testei, mas parei — não deu resultado'],
+    ['quero','Nunca, mas quero começar'],['nunca','Nunca, e não pretendo']],
+    fb:v=>({invisto:'Então você já sabe: <b>clique custa caro</b>. Cada um que cai num lugar amador é dinheiro jogado fora.',
+      parei:'Clássico. Na maioria das vezes o problema não era o anúncio — era <b>pra onde ele mandava</b> as pessoas.',
+      quero:'Perfeito. Começar do jeito certo é <b>mais barato</b> que corrigir depois.',
+      nunca:'Sem problema — mesmo sem anúncio, quem te procura no Google precisa te <b>achar e confiar</b>.'}[v])},
+  q4:{t:'Se você subisse um anúncio HOJE, para onde mandaria quem clicasse?',opts:[
+    ['zap','Pro meu WhatsApp direto'],['insta','Pro meu Instagram'],
+    ['nsei','Não sei — é exatamente esse meu problema']],
+    fb:v=>({zap:'Funciona… até a pessoa perguntar "me fala mais" e sumir. Uma página que apresenta seu trabalho <b>antes</b> do WhatsApp multiplica quem chama decidido.',
+      insta:'Anúncio pago mandando pro perfil: a pessoa rola dois posts, se distrai e esquece de você. <b>O clique você pagou mesmo assim.</b>',
+      nsei:'Essa resposta é o diagnóstico inteiro. <b>Anunciar sem destino é rasgar dinheiro</b> — e é o problema nº1 que resolvemos.',
+      site:'E ele converte? Se <b>você mesmo</b> não tem orgulho dele, o cliente sente o mesmo.'}[v])},
+  q5:{t:'Quantos clientes novos por mês fariam diferença real no seu caixa?',opts:[
+    ['5-10','5 a 10'],['10-30','10 a 30'],['30+','30 ou mais'],
+    ['perder','Só de parar de perder os que me procuram já ajudava']],
+    fb:()=> 'Anota esse número. <b>Ele volta já já.</b>'},
+  q6:{t:'Quando você quer resolver isso?',opts:[
+    ['semana','Essa semana'],['mes','Esse mês'],['tri','Nos próximos 3 meses'],['pesq','Só pesquisando por enquanto']],
+    fb:v=>({semana:'Ritmo bom. Spoiler: dá pra ter site no ar em <b>48h</b>.',
+      mes:'Tranquilo. O diagnóstico vale de qualquer jeito.',tri:'Tranquilo. O diagnóstico vale de qualquer jeito.',
+      pesq:'Sem pressa — o diagnóstico é seu, use quando fizer sentido.'}[v])}
+};
+
+function buildFlow(){
+  // branching: quem tem site bom pula a P4
+  flow = ['q1','q2','q3'];
+  if(A.q2 !== 'bom') flow.push('q4');
+  flow.push('q5','q6');
+}
+function start(){ track('quiz_start'); buildFlow(); idx=0; hist=[]; show('s-quiz'); render(); }
+function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
+
+function render(){
+  const qid = flow[idx], q = Q[qid];
+  const total = flow.length + 1; // + captura
+  document.getElementById('qcount').textContent = `Pergunta ${idx+1} de ${total}`;
+  const pct = Math.round((idx/total)*100);
+  document.getElementById('qpct').textContent = `Diagnóstico ${pct}% pronto`;
+  document.getElementById('qbar').style.width = pct+'%';
+  updateMeter();
+  document.getElementById('qnum').textContent = `Diagnóstico Pulso · ${qid.toUpperCase()}`;
+  document.getElementById('qtitle').textContent = q.t;
+  const box = document.getElementById('opts'); box.innerHTML='';
+  let opts = q.opts.slice();
+  if(qid==='q4' && A.q2==='ruim') opts.push(['site','Pro meu site atual']);
+  opts.forEach(([v,label])=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=label;
+    b.onclick=()=>pick(qid,v,b); box.appendChild(b);
+  });
+  document.getElementById('feedback').classList.remove('show');
+  document.getElementById('btnBack').style.visibility = idx===0?'hidden':'visible';
+}
+
+let advancing=false;
+function pick(qid,v,btn){
+  if(advancing) return; advancing=true;
+  A[qid]=v; track('quiz_'+qid,{answer:v});
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('picked'));
+  btn.classList.add('picked');
+  const fb=document.getElementById('feedback');
+  // conteúdo estático definido acima — sem input do usuário
+  fb.innerHTML = typeof Q[qid].fb==='function'?Q[qid].fb(v):Q[qid].fb;
+  fb.classList.add('show');
+  updateMeter();
+  setTimeout(()=>{ advancing=false; next(qid); }, 1600);   // feedback ~1,6s, avanço automático
+}
+function next(qid){
+  hist.push(idx);
+  if(qid==='q2') buildFlow();          // ramo pode mudar o fluxo
+  if(idx < flow.length-1){ idx++; render(); }
+  else { track('quiz_capture_view'); show('s-capture'); }
+}
+function goBack(){ if(hist.length){ idx=hist.pop(); render(); } }
+
+// ---- score (régua do funil-quiz.md) ----
+function score(){
+  if(A.q2==='bom') return 74;
+  let s=20;
+  if(A.q3==='invisto')s+=15; else if(A.q3==='parei')s+=10;
+  if(A.q4==='nsei')s-=15;
+  if(A.q6==='semana')s+=10;
+  return Math.max(8,Math.min(60,s+(A.q2==='ruim'?12:0)));
+}
+const LABELS = s => s<40?'Invisível pra quem procura': s<70?'Presente, mas perdendo cliente':'Quase lá — falta tráfego';
+
+function submitLead(e){
+  e.preventDefault();
+  const nome=document.getElementById('f-nome').value.trim();
+  track('Lead',{nome});   // versão real: POST → webhook :3020 (respostas + score + UTMs)
+  show('s-calc');
+  const msgs=['Cruzando suas respostas com 63 sites entregues','Analisando seu segmento…','Montando seu diagnóstico…'];
+  let i=0; const t=setInterval(()=>{ i=(i+1)%msgs.length; document.getElementById('calcmsg').textContent=msgs[i]; },900);
+  setTimeout(()=>{ clearInterval(t); result(nome); }, 2600);
+  return false;
+}
+
+function result(nome){
+  const s=score(), seg=SEGS[A.q1]||'negócio';
+  show('s-result'); track('quiz_result',{score:s});
+  // score animado
+  let cur=0; const el=document.getElementById('r-score');
+  const step=()=>{ cur+=Math.ceil(s/40); if(cur>=s)cur=s; el.textContent=cur; if(cur<s)requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+  document.getElementById('r-track').style.width=s+'%';
+  document.getElementById('r-label').textContent=LABELS(s);
+  // espelho das respostas (nome escapado — input do usuário)
+  const meta={'5-10':'5 a 10','10-30':'10 a 30','30+':'30+','perder':'parar de perder'}[A.q5]||'mais';
+  const dor = A.q2==='bom' ? 'seu site é bom — mas <b>pouca gente certa chega nele</b>'
+    : A.q2==='ruim' ? '<b>seu site atual está te custando cliente</b>'
+    : 'hoje <b>não tem para onde mandar quem clica num anúncio seu</b>';
+  document.getElementById('r-mirror').innerHTML =
+    `${nome?`<b>${esc(nome)}</b>, v`:'V'}ocê tem um(a) <b>${seg}</b>, quer <b>${meta} clientes novos por mês</b> — e ${dor}.`;
+  // ofertas: só combo se site bom; só avulso se "não pretendo anunciar"; senão as duas
+  const box=document.getElementById('r-offers'); box.innerHTML='';
+  const site=`<div class="offer"><h3>Site Profissional 48h</h3><div class="price">R$500</div>
+    <ul><li>No ar em 48 horas</li><li>Texto aprovado por você antes</li><li>3 rodadas de ajuste</li><li>Botão de WhatsApp direto</li></ul></div>`;
+  const combo=`<div class="offer hot"><span class="tag">escolha de quem quer cliente</span><h3>Site + Anúncios 3 meses</h3>
+    <div class="price">R$900<small>/mês ×3</small></div>
+    <ul><li>Tudo do site 48h</li><li>Gestão de anúncios Meta</li><li>Reunião quinzenal</li><li>Relatório mensal simples</li></ul></div>`;
+  if(A.q2==='bom') box.innerHTML=combo;
+  else if(A.q3==='nunca') box.innerHTML=site;
+  else box.innerHTML=site+combo;
+  // CTA
+  const zap='5561900000000'; // PLACEHOLDER — trocar pelo número real
+  const txt=encodeURIComponent(`Oi! Fiz o diagnóstico (nota ${s}/100) e quero agendar a conversa de 20min.`);
+  const cta=document.getElementById('r-cta');
+  if(A.q6==='pesq'){ cta.textContent='Receber meu diagnóstico no WhatsApp';
+    document.getElementById('r-ctasub').textContent='Sem call, sem pressão — só o diagnóstico e o exemplo do seu segmento.'; }
+  cta.href=`https://wa.me/${zap}?text=${txt}`;
+  cta.onclick=()=>track('Schedule',{score:s});
+}
+function updateMeter(){
+  const answered=Object.keys(A).length;
+  const s=answered? score(): 20;
+  const m=document.getElementById('meterbar');
+  m.style.width=Math.max(8,s)+'%';
+  m.style.background = s<40?'var(--red)': s<70?'var(--gold)':'var(--green)';
+  document.getElementById('meterval').textContent='Prontidão: '+(answered? s+'/100':'—');
+}
+</script>
+</body>
+</html>
