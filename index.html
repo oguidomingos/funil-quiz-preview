@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diagnóstico de Prontidão Digital — Iceberg</title>
-<meta name="description" content="Seu negócio está pronto pra receber clientes da internet? Descubra em 7 perguntas (1 minuto).">
+<meta name="description" content="Seu negócio está pronto pra receber clientes da internet? Descubra em poucos passos (1 minuto).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -43,6 +43,8 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
   box-shadow:0 8px 24px rgba(10,123,252,.45);transition:transform .12s,background .12s,box-shadow .12s;
   text-align:center;text-decoration:none}
 .btn:hover{background:var(--ice-blue-light);transform:translateY(-1px);box-shadow:0 10px 30px rgba(63,148,248,.55)}
+.btn-secondary{background:var(--glass-bg);border:1px solid var(--glass-border);color:#fff;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:none}
+.btn-secondary:hover{background:rgba(255,255,255,.1);box-shadow:none;transform:translateY(-1px)}
 .trust{text-align:center;color:var(--ice-sky);font-size:.8rem;margin-top:.9rem}
 /* progress + meter */
 .hud{margin:.6rem 0 1rem}
@@ -72,6 +74,24 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
   padding:.9rem 1.1rem;font-size:.92rem;line-height:1.45;margin-top:.9rem;display:none}
 .feedback.show{display:block;animation:fadeInBlur .45s ease both}
 .feedback b{color:#fff}
+/* story / case screens */
+.story-numcard{background:var(--glass-bg);border:1px solid rgba(63,148,248,.45);border-radius:20px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--glass-shadow),0 0 40px rgba(10,123,252,.25);padding:1.2rem 1.4rem;text-align:center;margin:.8rem 0 1rem;animation:fadeInBlur .5s ease both}
+.story-num{font-family:"Geist",sans-serif;font-weight:300;font-size:2.8rem;line-height:1;color:#fff;letter-spacing:-.02em}
+.story-numsub{color:var(--ice-sky);font-size:.85rem;margin-top:.3rem}
+.story-content{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--glass-shadow);padding:1.1rem 1.2rem;animation:fadeInBlur .45s ease both}
+.story-body{color:var(--ice-sky);font-size:.95rem;line-height:1.55;margin-bottom:.6rem}
+.story-body:last-child{margin-bottom:0}
+.story-body b{color:#fff}
+.story-quote{font-style:italic;color:#fff;font-size:1.05rem;line-height:1.5;margin:.6rem 0;padding-left:.8rem;border-left:3px solid var(--ice-blue)}
+.story-footnote{color:rgba(173,216,242,.55);font-size:.72rem;text-align:center;margin-top:.9rem}
+.quote-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--glass-shadow);padding:1rem 1.1rem;margin-bottom:.8rem;animation:fadeInBlur .45s ease both}
+.quote-who{color:var(--ice-cyan);font-weight:700;font-size:.8rem;margin-top:.5rem}
+.menu-list{list-style:none;margin:.6rem 0 0;display:flex;flex-direction:column;gap:.4rem}
+.menu-list li{color:var(--ice-sky);font-size:.92rem;padding-left:1.3rem;position:relative}
+.menu-list li::before{content:"👉";position:absolute;left:0}
 /* form */
 .field{margin-bottom:.9rem}
 .field label{display:block;font-size:.85rem;font-weight:700;color:var(--ice-sky);margin-bottom:.3rem}
@@ -136,40 +156,43 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
   <!-- INTRO -->
   <section class="screen active" id="s-intro">
     <h1>Seu negócio está pronto pra receber clientes da internet?</h1>
-    <p class="sub">Descubra em <b>7 perguntas</b> (leva 1 minuto). No final, você recebe seu
+    <p class="sub">Descubra em <b>poucos passos</b> (leva 1 minuto). No final, você recebe seu
     <b>Diagnóstico de Prontidão Digital</b> — e um exemplo de site real do seu segmento.</p>
     <button class="btn" onclick="start()">Começar diagnóstico →</button>
     <p class="trust">63 sites entregues • resposta na hora • grátis</p>
     <p class="note">⚠️ PROTÓTIPO DE PREVIEW — nada é enviado; número de WhatsApp do final é placeholder.</p>
   </section>
 
-  <!-- QUESTION -->
+  <!-- T1: NOME -->
+  <section class="screen" id="s-name">
+    <h1>Como posso te chamar?</h1>
+    <p class="sub">Vou usar seu nome pra deixar esse diagnóstico mais direto ao ponto.</p>
+    <form onsubmit="return submitName(event)">
+      <div class="field"><label for="f-nome-only">Seu nome</label><input id="f-nome-only" required placeholder="Seu primeiro nome"></div>
+      <button class="btn" type="submit">Continuar →</button>
+    </form>
+  </section>
+
+  <!-- FLUXO NARRATIVO (perguntas + cases + menu) -->
   <section class="screen" id="s-quiz">
     <div class="hud">
       <div class="hud-label"><span id="qcount"></span><span id="qpct"></span></div>
       <div class="bar"><i id="qbar"></i></div>
-      <div class="meter"><span class="shark">🦈</span><div class="track"><i id="meterbar"></i></div><span id="meterval">Prontidão: —</span></div>
+      <div class="meter" id="meterrow"><span class="shark">🦈</span><div class="track"><i id="meterbar"></i></div><span id="meterval">Prontidão: —</span></div>
     </div>
-    <div>
-      <div class="qnum" id="qnum"></div>
-      <div class="qtitle" id="qtitle"></div>
-      <div class="opts" id="opts"></div>
-      <div class="feedback" id="feedback"></div>
-      <button class="back" id="btnBack" onclick="goBack()">← voltar</button>
-    </div>
+    <div id="stepbody"></div>
+    <button class="back" id="btnBack" onclick="goBack()">← voltar</button>
   </section>
 
-  <!-- CAPTURE (P7) -->
+  <!-- CAPTURE (T12) -->
   <section class="screen" id="s-capture">
     <div class="hud">
       <div class="hud-label"><span>Última etapa</span><span>Diagnóstico 95% pronto</span></div>
       <div class="bar"><i style="width:95%"></i></div>
     </div>
-    <h1 style="font-size:1.45rem">Pronto! Seu Diagnóstico de Prontidão Digital foi gerado.</h1>
-    <p class="sub" style="margin-bottom:1rem">Coloca seus dados que a gente te mostra o resultado — e te manda no
-    WhatsApp o link de um <b>site real que fizemos pro seu segmento</b>.</p>
+    <h1 id="cap-title" style="font-size:1.45rem"></h1>
+    <p class="sub" style="margin-bottom:1rem" id="cap-sub"></p>
     <form onsubmit="return submitLead(event)">
-      <div class="field"><label for="f-nome">Seu nome</label><input id="f-nome" required placeholder="Como você quer ser chamado?"></div>
       <div class="field"><label for="f-zap">Seu WhatsApp</label><input id="f-zap" required inputmode="tel" placeholder="(61) 9 9999-9999"></div>
       <button class="btn" type="submit">Ver meu diagnóstico →</button>
     </form>
@@ -213,9 +236,9 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
 </div>
 <script>
 // ---- estado ----
-const A = {};                 // respostas por id de pergunta
+const A = {};                 // respostas por id de pergunta + nome
 let hist = [];                // histórico p/ voltar
-let flow = [];                // fluxo dinâmico (branching no eixo P2)
+let flow = [];                // fluxo dinâmico (perguntas + telas de case + menu; branching no eixo P2)
 let idx = 0;
 const track = (ev,data)=>console.log('[pixel]',ev,data||'');   // stub Pixel/CAPI
 const esc = s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -260,34 +283,160 @@ const Q = {
       pesq:'Sem pressa — o diagnóstico é seu, use quando fizer sentido.'}[v])}
 };
 
+// ---- telas narrativas (cases reais — números de 13/08/2026, ver funil-v2-narrativo.md) ----
+const STORIES = {
+  story_intro:{
+    kicker:'Pulso · Apresentação',
+    render:()=>`
+      <h1 style="font-size:1.5rem">${esc(A.nome)}, a Pulso é uma operação de marketing e IA</h1>
+      <p class="sub">Construímos a presença digital de negócios locais e levamos clientes até eles —
+      com uma diferença: <b>velocidade</b>. Site profissional no ar em 48 horas. Campanha rodando na
+      primeira semana. Resultado medido em dias, não em trimestres.</p>
+      <p class="sub" style="margin-bottom:0">A seguir, casos reais (com números reais) de quem deu o
+      primeiro passo com a gente. 👇</p>`
+  },
+  story_hanna:{
+    kicker:'Caso real · Eficiência', big:'R$18,18', bigSuffix:'por conversa de cliente no WhatsApp',
+    render:()=>`
+      <p class="story-body">Este é um estúdio de tatuagem parceiro nosso. Verba enxuta, Google Ads bem configurado.</p>
+      <p class="story-body">Com <b>R$400 investidos</b>, chegaram <b>21 conversas</b> de clientes interessados
+      direto no WhatsApp.</p>
+      <p class="story-body">Não é mágica: é anúncio certo + um destino profissional pra onde mandar o clique.</p>`,
+    footnote:true, trackName:'story_hanna'
+  },
+  story_garage:{
+    kicker:'Caso real · Consistência', big:'R$12,78', bigSuffix:'na melhor campanha, por conversa',
+    render:()=>`
+      <p class="story-body">Esse cliente tem uma conta rodando com a gente há meses.</p>
+      <p class="story-body">A melhor campanha girou a <b>R$12,78 por conversa</b>. No total do período,
+      foram <b>R$10,2 mil investidos</b> e centenas de conversas de clientes geradas — uma conta de
+      longo prazo, não um pico isolado.</p>
+      <p class="story-body">É o tipo de ritmo que se constrói com consistência, não com sorte.</p>`,
+    footnote:true, trackName:'story_garage'
+  },
+  story_fabiane:{
+    kicker:'Caso real · Velocidade de entrega', big:'1 semana', bigSuffix:'do zero ao protótipo',
+    render:()=>`
+      <p class="story-body">Não é só anúncio. A Fabiane, do IIBPR, precisava de um aplicativo.</p>
+      <p class="story-body">Prometemos o protótipo em <b>1 semana</b>. A reação dela foi:</p>
+      <p class="story-quote">"Sério? Funcionando no Celular?"</p>
+      <p class="story-body">O app foi entregue dias depois. É esse o ritmo que IA + processo bem
+      montado entrega.</p>`,
+    footnote:true, trackName:'story_fabiane'
+  },
+  story_iibpr:{
+    kicker:'Caso real · Campanha curta', big:'36', bigSuffix:'ingressos vendidos',
+    render:()=>`
+      <p class="story-body">Mesmo cliente, outro objetivo: vender ingresso pra um evento.</p>
+      <p class="story-body">Campanha curta, <b>R$4.076 investidos</b>, <b>36 ingressos vendidos</b> —
+      <b>R$113 por venda</b>.</p>
+      <p class="story-body">Resultado rápido, medido, sem enrolação.</p>`,
+    footnote:true, trackName:'story_iibpr'
+  },
+  story_depoimentos:{
+    kicker:'Quem já trabalha com a gente',
+    render:()=>`
+      <div class="quote-card"><p class="story-quote">"Só pra agradecer aí pelo trabalho essa manhã!
+      Foi bom dms…"</p><p class="quote-who">Vitor — Expoente · 05/08</p></div>
+      <div class="quote-card"><p class="story-quote">"foi puramente fruto do trabalho de vcs! Ela viu
+      e quis o contato!… indiquei muito forte mesmo!"</p><p class="quote-who">Dra. Lara · 24/07</p></div>`,
+    trackName:'story_depoimentos'
+  }
+};
+
 function buildFlow(){
-  // branching: quem tem site bom pula a P4
-  flow = ['q1','q2','q3'];
+  // branching: quem tem site bom pula a P4 (destino do clique)
+  flow = ['story_intro','q1','q2','story_hanna','story_garage','q3'];
   if(A.q2 !== 'bom') flow.push('q4');
-  flow.push('q5','q6');
+  flow.push('story_fabiane','story_iibpr','q5','q6','story_depoimentos','menu');
 }
-function start(){ track('quiz_start'); buildFlow(); idx=0; hist=[]; show('s-quiz'); render(); }
+
+function start(){ track('quiz_start'); show('s-name'); }
+function submitName(e){
+  e.preventDefault();
+  const v = document.getElementById('f-nome-only').value.trim();
+  A.nome = v || 'você';
+  track('name_captured',{nome:A.nome});
+  buildFlow(); idx=0; hist=[];
+  show('s-quiz'); render();
+  return false;
+}
 function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 
 function render(){
-  const qid = flow[idx], q = Q[qid];
+  const step = flow[idx];
   const total = flow.length + 1; // + captura
-  document.getElementById('qcount').textContent = `Pergunta ${idx+1} de ${total}`;
+  document.getElementById('qcount').textContent = `Etapa ${idx+1} de ${total}`;
   const pct = Math.round((idx/total)*100);
   document.getElementById('qpct').textContent = `Diagnóstico ${pct}% pronto`;
   document.getElementById('qbar').style.width = pct+'%';
-  updateMeter();
-  document.getElementById('qnum').textContent = `Diagnóstico Pulso · ${qid.toUpperCase()}`;
-  document.getElementById('qtitle').textContent = q.t;
-  const box = document.getElementById('opts'); box.innerHTML='';
-  let opts = q.opts.slice();
-  if(qid==='q4' && A.q2==='ruim') opts.push(['site','Pro meu site atual']);
-  opts.forEach(([v,label])=>{
-    const b=document.createElement('button'); b.className='opt'; b.textContent=label;
-    b.onclick=()=>pick(qid,v,b); box.appendChild(b);
-  });
-  document.getElementById('feedback').classList.remove('show');
   document.getElementById('btnBack').style.visibility = idx===0?'hidden':'visible';
+
+  const isQuestion = Object.prototype.hasOwnProperty.call(Q,step);
+  document.getElementById('meterrow').style.display = isQuestion ? 'flex' : 'none';
+  if(isQuestion) updateMeter();
+
+  const body = document.getElementById('stepbody');
+  body.innerHTML = '';
+  if(isQuestion) renderQuestion(step, body);
+  else if(step === 'menu') renderMenu(body);
+  else renderStory(step, body);
+}
+
+function renderQuestion(qid, body){
+  const q = Q[qid];
+  const qnum=document.createElement('div'); qnum.className='qnum'; qnum.textContent=`Diagnóstico Pulso · ${qid.toUpperCase()}`;
+  const qtitle=document.createElement('div'); qtitle.className='qtitle'; qtitle.textContent=q.t;
+  const opts=document.createElement('div'); opts.className='opts';
+  let optList = q.opts.slice();
+  if(qid==='q4' && A.q2==='ruim') optList.push(['site','Pro meu site atual']);
+  optList.forEach(([v,label])=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=label;
+    b.onclick=()=>pick(qid,v,b); opts.appendChild(b);
+  });
+  const feedback=document.createElement('div'); feedback.className='feedback'; feedback.id='feedback';
+  body.appendChild(qnum); body.appendChild(qtitle); body.appendChild(opts); body.appendChild(feedback);
+}
+
+function renderStory(key, body){
+  const s = STORIES[key];
+  if(s.trackName) track(s.trackName); else track(key);
+  const kicker=document.createElement('div'); kicker.className='qnum'; kicker.textContent=s.kicker;
+  body.appendChild(kicker);
+  if(s.big){
+    const card=document.createElement('div'); card.className='story-numcard';
+    card.innerHTML = `<div class="story-num">${s.big}</div><div class="story-numsub">${s.bigSuffix||''}</div>`;
+    body.appendChild(card);
+  }
+  const content=document.createElement('div'); content.className='story-content';
+  content.innerHTML = s.render(); // conteúdo estático (nome já escapado via esc() dentro do render)
+  body.appendChild(content);
+  if(s.footnote){
+    const fn=document.createElement('p'); fn.className='story-footnote'; fn.textContent='números reais de clientes — jul/2026';
+    body.appendChild(fn);
+  }
+  const btn=document.createElement('button'); btn.className='btn'; btn.style.marginTop='1rem';
+  btn.textContent='Continuar →'; btn.onclick=()=>next(key);
+  body.appendChild(btn);
+}
+
+function renderMenu(body){
+  const kicker=document.createElement('div'); kicker.className='qnum'; kicker.textContent='O que fazemos por negócios locais';
+  const content=document.createElement('div'); content.className='story-content';
+  content.innerHTML = `
+    <h1 style="font-size:1.3rem">O site em 48h é só o primeiro passo, ${esc(A.nome)}.</h1>
+    <p class="sub" style="margin-bottom:.6rem">Time completo por trás:</p>
+    <ul class="menu-list">
+      <li>Criação de Sites (48h)</li><li>Tráfego Pago</li><li>Agente de IA no WhatsApp</li>
+      <li>Automação</li><li>CRM</li><li>Relatórios ao vivo</li>
+    </ul>
+    <p class="qtitle" style="margin-top:1rem">Quer isso trabalhando pro seu negócio, ${esc(A.nome)}?</p>`;
+  body.appendChild(kicker); body.appendChild(content);
+  const btnSim=document.createElement('button'); btnSim.className='btn'; btnSim.style.marginTop='1rem';
+  btnSim.textContent='Sim, quero'; btnSim.onclick=()=>{ track('menu_sim'); next('menu'); };
+  const btnSaber=document.createElement('button'); btnSaber.className='btn btn-secondary'; btnSaber.style.marginTop='.6rem';
+  btnSaber.textContent='Quero saber mais'; btnSaber.onclick=()=>{ track('menu_saber'); next('menu'); };
+  body.appendChild(btnSim); body.appendChild(btnSaber);
 }
 
 let advancing=false;
@@ -303,13 +452,19 @@ function pick(qid,v,btn){
   updateMeter();
   setTimeout(()=>{ advancing=false; next(qid); }, 1600);   // feedback ~1,6s, avanço automático
 }
-function next(qid){
+function next(step){
   hist.push(idx);
-  if(qid==='q2') buildFlow();          // ramo pode mudar o fluxo
+  if(step==='q2') buildFlow();          // ramo pode mudar o fluxo (P4)
   if(idx < flow.length-1){ idx++; render(); }
-  else { track('quiz_capture_view'); show('s-capture'); }
+  else { track('quiz_capture_view'); enterCapture(); }
 }
 function goBack(){ if(hist.length){ idx=hist.pop(); render(); } }
+
+function enterCapture(){
+  document.getElementById('cap-title').textContent = `${A.nome}, deixa teu WhatsApp que a gente te chama em poucos minutos com o diagnóstico`;
+  document.getElementById('cap-sub').textContent = 'Sem call chata, sem enrolação — só o resultado e o plano do primeiro passo.';
+  show('s-capture');
+}
 
 // ---- score (régua do funil-quiz.md) ----
 function score(){
@@ -324,12 +479,11 @@ const LABELS = s => s<40?'Invisível pra quem procura': s<70?'Presente, mas perd
 
 function submitLead(e){
   e.preventDefault();
-  const nome=document.getElementById('f-nome').value.trim();
-  track('Lead',{nome});   // versão real: POST → webhook :3020 (respostas + score + UTMs)
+  track('Lead',{nome:A.nome});   // versão real: POST → webhook :3020 (respostas + score + UTMs)
   show('s-calc');
   const msgs=['Cruzando suas respostas com 63 sites entregues','Analisando seu segmento…','Montando seu diagnóstico…'];
   let i=0; const t=setInterval(()=>{ i=(i+1)%msgs.length; document.getElementById('calcmsg').textContent=msgs[i]; },900);
-  setTimeout(()=>{ clearInterval(t); result(nome); }, 2600);
+  setTimeout(()=>{ clearInterval(t); result(A.nome); }, 2600);
   return false;
 }
 
@@ -349,11 +503,12 @@ function result(nome){
     : 'hoje <b>não tem para onde mandar quem clica num anúncio seu</b>';
   document.getElementById('r-mirror').innerHTML =
     `${nome?`<b>${esc(nome)}</b>, v`:'V'}ocê tem um(a) <b>${seg}</b>, quer <b>${meta} clientes novos por mês</b> — e ${dor}.`;
-  // ofertas: só combo se site bom; só avulso se "não pretendo anunciar"; senão as duas
+  // ofertas: site 48h = primeiro passo (vem primeiro); combo = caminho dos cases que você viu
+  // só combo se site bom; só avulso se "não pretendo anunciar"; senão as duas
   const box=document.getElementById('r-offers'); box.innerHTML='';
-  const site=`<div class="offer"><h3>Site Profissional 48h</h3><div class="price">R$500</div>
+  const site=`<div class="offer"><span class="tag">primeiro passo</span><h3>Site Profissional 48h</h3><div class="price">R$500</div>
     <ul><li>No ar em 48 horas</li><li>Texto aprovado por você antes</li><li>3 rodadas de ajuste</li><li>Botão de WhatsApp direto</li></ul></div>`;
-  const combo=`<div class="offer hot"><span class="tag">escolha de quem quer cliente</span><h3>Site + Anúncios 3 meses</h3>
+  const combo=`<div class="offer hot"><span class="tag">caminho dos cases que você viu</span><h3>Site + Anúncios 3 meses</h3>
     <div class="price">R$900<small>/mês ×3</small></div>
     <ul><li>Tudo do site 48h</li><li>Gestão de anúncios Meta</li><li>Reunião quinzenal</li><li>Relatório mensal simples</li></ul></div>`;
   if(A.q2==='bom') box.innerHTML=combo;
