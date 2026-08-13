@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico de Prontidão Digital — Iceberg</title>
-<meta name="description" content="Seu negócio está pronto pra receber clientes da internet? Descubra em poucos passos (1 minuto).">
+<title>Iceberg — Comece a vender pela internet em 48 horas</title>
+<meta name="description" content="O primeiro passo é um site. O segundo é anunciar. Resolva isso em 48 horas. Faça o quiz e descubra se é o seu momento.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -86,12 +86,37 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
 .story-body b{color:#fff}
 .story-quote{font-style:italic;color:#fff;font-size:1.05rem;line-height:1.5;margin:.6rem 0;padding-left:.8rem;border-left:3px solid var(--ice-blue)}
 .story-footnote{color:rgba(173,216,242,.55);font-size:.72rem;text-align:center;margin-top:.9rem}
+/* WhatsApp chat preview (prints reconstruídos) */
+.wa-chat{background:#0B141A;border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;
+  box-shadow:var(--glass-shadow);margin:.8rem 0;animation:fadeInBlur .5s ease both;font-family:"Plus Jakarta Sans",sans-serif}
+.wa-head{background:#1F2C34;padding:.6rem .9rem;display:flex;align-items:center;gap:.6rem}
+.wa-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--ice-blue),var(--ice-cyan));
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.wa-title{color:#E9EDEF;font-size:.85rem;font-weight:600}
+.wa-sub{color:#8696A0;font-size:.68rem}
+.wa-body{padding:.8rem .7rem;display:flex;flex-direction:column;gap:.45rem;
+  background:radial-gradient(circle at 30% 20%, rgba(63,148,248,.05), transparent 60%),#0B141A}
+.wa-msg{max-width:82%;padding:.5rem .7rem;border-radius:10px;font-size:.82rem;line-height:1.4;color:#E9EDEF;position:relative}
+.wa-msg .wa-time{display:block;font-size:.6rem;color:#8696A0;text-align:right;margin-top:.2rem}
+.wa-in{background:#1F2C34;align-self:flex-start;border-top-left-radius:2px}
+.wa-out{background:#005C4B;align-self:flex-end;border-top-right-radius:2px}
+.wa-name{font-size:.66rem;font-weight:700;color:var(--ice-blue-light);margin-bottom:.15rem}
+.wa-caption{color:rgba(173,216,242,.55);font-size:.7rem;text-align:center;padding:.4rem .8rem .7rem}
 .quote-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   box-shadow:var(--glass-shadow);padding:1rem 1.1rem;margin-bottom:.8rem;animation:fadeInBlur .45s ease both}
 .quote-who{color:var(--ice-cyan);font-weight:700;font-size:.8rem;margin-top:.5rem}
 .menu-list{list-style:none;margin:.6rem 0 0;display:flex;flex-direction:column;gap:.4rem}
 .menu-list li{color:var(--ice-sky);font-size:.92rem;padding-left:1.3rem;position:relative}
 .menu-list li::before{content:"👉";position:absolute;left:0}
+/* showcase de entregas (tangibilidade) */
+.showcase{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin:1rem 0}
+.phone-frame{width:132px;background:#111B21;border:1px solid var(--glass-border);border-radius:18px;
+  padding:7px 7px 10px;box-shadow:var(--glass-shadow),0 0 30px rgba(10,123,252,.15);animation:fadeInBlur .5s ease both}
+.phone-frame:nth-child(2){animation-delay:.08s}
+.phone-frame:nth-child(3){animation-delay:.16s}
+.phone-notch{width:28px;height:4px;background:rgba(255,255,255,.25);border-radius:99px;margin:0 auto 5px}
+.phone-frame img{width:100%;display:block;border-radius:11px}
+.phone-label{color:var(--ice-sky);font-size:.66rem;text-align:center;margin-top:.4rem}
 /* form */
 .field{margin-bottom:.9rem}
 .field label{display:block;font-size:.85rem;font-weight:700;color:var(--ice-sky);margin-bottom:.3rem}
@@ -132,17 +157,6 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
 .offer ul{list-style:none;margin-top:.55rem;font-size:.82rem;color:var(--ice-sky)}
 .offer li{padding:.16rem 0 .16rem 1.2rem;position:relative}
 .offer li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
-/* prova social — prints reais */
-.proof-strip{margin-top:1.2rem;text-align:center}
-.proof-strip-title{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ice-sky);margin-bottom:.65rem}
-.proof-thumbs{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap}
-.phone-frame{width:84px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;
-  padding:6px 6px 8px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:var(--glass-shadow);
-  animation:fadeInBlur .5s ease both}
-.phone-frame:nth-child(2){animation-delay:.08s}
-.phone-frame:nth-child(3){animation-delay:.16s}
-.phone-notch{width:24px;height:4px;background:rgba(255,255,255,.25);border-radius:99px;margin:0 auto 4px}
-.phone-frame img{width:100%;display:block;border-radius:9px}
 .proof{text-align:center;color:var(--ice-sky);font-size:.8rem;margin-top:1rem;line-height:1.5}
 .proof a{color:var(--ice-blue-light)}
 .note{background:rgba(255,194,75,.1);border:1px solid rgba(255,194,75,.4);color:#FFDDA0;border-radius:10px;
@@ -153,17 +167,19 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
 <div class="brand"><img class="logo" src="assets/iceberg-logo-horizontal.svg" alt="Iceberg"></div>
 <div class="wrap">
 
-  <!-- INTRO -->
+  <!-- HOOK: a oferta que o cara quer ouvir -->
   <section class="screen active" id="s-intro">
-    <h1>Seu negócio está pronto pra receber clientes da internet?</h1>
-    <p class="sub">Descubra em <b>poucos passos</b> (leva 1 minuto). No final, você recebe seu
-    <b>Diagnóstico de Prontidão Digital</b> — e um exemplo de site real do seu segmento.</p>
-    <button class="btn" onclick="start()">Começar diagnóstico →</button>
-    <p class="trust">63 sites entregues • resposta na hora • grátis</p>
+    <h1>Tem gente vendendo todos os dias fazendo anúncios simples na internet.</h1>
+    <p class="sub"><b>O primeiro passo é um site. O segundo é anunciar.</b><br>
+    A gente resolve os dois em <b>48 horas</b>.</p>
+    <p class="sub">Responde esse quiz de 1 minuto e descobre se esse é o momento certo pra você
+    começar a vender pela internet.</p>
+    <button class="btn" onclick="start()">Fazer o quiz →</button>
+    <p class="trust">6 anos de mercado • resposta na hora • grátis</p>
     <p class="note">⚠️ PROTÓTIPO DE PREVIEW — nada é enviado; número de WhatsApp do final é placeholder.</p>
   </section>
 
-  <!-- T1: NOME -->
+  <!-- NOME -->
   <section class="screen" id="s-name">
     <h1>Como posso te chamar?</h1>
     <p class="sub">Vou usar seu nome pra deixar esse diagnóstico mais direto ao ponto.</p>
@@ -173,7 +189,7 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
     </form>
   </section>
 
-  <!-- FLUXO NARRATIVO (perguntas + cases + menu) -->
+  <!-- FLUXO (quiz → carta de vendas → menu | pós-captura: comprovação) -->
   <section class="screen" id="s-quiz">
     <div class="hud">
       <div class="hud-label"><span id="qcount"></span><span id="qpct"></span></div>
@@ -184,17 +200,17 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
     <button class="back" id="btnBack" onclick="goBack()">← voltar</button>
   </section>
 
-  <!-- CAPTURE (T12) -->
+  <!-- OPT-IN -->
   <section class="screen" id="s-capture">
     <div class="hud">
-      <div class="hud-label"><span>Última etapa</span><span>Diagnóstico 95% pronto</span></div>
-      <div class="bar"><i style="width:95%"></i></div>
+      <div class="hud-label"><span>Quase lá</span><span id="cap-pct"></span></div>
+      <div class="bar"><i id="cap-bar" style="width:70%"></i></div>
     </div>
     <h1 id="cap-title" style="font-size:1.45rem"></h1>
     <p class="sub" style="margin-bottom:1rem" id="cap-sub"></p>
     <form onsubmit="return submitLead(event)">
       <div class="field"><label for="f-zap">Seu WhatsApp</label><input id="f-zap" required inputmode="tel" placeholder="(61) 9 9999-9999"></div>
-      <button class="btn" type="submit">Ver meu diagnóstico →</button>
+      <button class="btn" type="submit">Quero ver os resultados →</button>
     </form>
     <p class="tiny">Sem spam. Sem ligação chata. Prometido.</p>
   </section>
@@ -203,8 +219,8 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
   <section class="screen" id="s-calc">
     <div class="calc">
       <div class="spinner"></div>
-      <h1 style="font-size:1.3rem">Calculando seu diagnóstico…</h1>
-      <p id="calcmsg">Cruzando suas respostas com 63 sites entregues</p>
+      <h1 style="font-size:1.3rem">Montando seu diagnóstico…</h1>
+      <p id="calcmsg">Enquanto isso, veja o que entregamos nas últimas semanas 👇</p>
     </div>
   </section>
 
@@ -218,39 +234,30 @@ h1{font-family:"Geist",sans-serif;font-weight:400;color:#fff;font-size:1.8rem;li
     <div class="mirror" id="r-mirror"></div>
     <div class="bridge">A boa notícia: isso se resolve em 48 horas.</div>
     <div class="offers" id="r-offers"></div>
-    <a class="btn" id="r-cta" href="#" target="_blank" rel="noopener">Agendar conversa de 20 min — grátis</a>
-    <p class="trust" id="r-ctasub">Sem compromisso. Você sai da call sabendo o que seu negócio precisa.</p>
-    <div class="proof-strip">
-      <div class="proof-strip-title">sites reais entregues em 48h</div>
-      <div class="proof-thumbs">
-        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/print-paulista-mobile.png" alt="Site do Restaurante do Paulista"></div>
-        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/print-zezinho-mobile.png" alt="Site do Zezinho Carne de Sol"></div>
-      </div>
-    </div>
-    <p class="proof"><b>63 sites entregues</b> para negócios locais —
-      <a href="https://oguidomingos.github.io/site-paulista/" target="_blank" rel="noopener">Restaurante do Paulista</a> ·
-      <a href="https://oguidomingos.github.io/site-fogo-galpao/" target="_blank" rel="noopener">Fogo do Galpão</a> ·
-      <a href="https://oguidomingos.github.io/site-zezinho/" target="_blank" rel="noopener">Zezinho Carne de Sol</a></p>
+    <a class="btn" id="r-cta" href="#" target="_blank" rel="noopener">Quero começar — me chama no WhatsApp</a>
+    <p class="trust" id="r-ctasub">A gente te chama em poucos minutos com o plano do primeiro passo.</p>
   </section>
 
 </div>
 <script>
 // ---- estado ----
-const A = {};                 // respostas por id de pergunta + nome
-let hist = [];                // histórico p/ voltar
-let flow = [];                // fluxo dinâmico (perguntas + telas de case + menu; branching no eixo P2)
+const A = {};
+let hist = [];
+let flow = [];        // fase 1: quiz + carta de vendas + menu
+let proofFlow = [];   // fase 2 (pós-opt-in): comprovação
+let phase = 1;
 let idx = 0;
 const track = (ev,data)=>console.log('[pixel]',ev,data||'');   // stub Pixel/CAPI
 const esc = s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-// ---- perguntas (copy oficial: copy-ofertas.md) ----
+// ---- perguntas ----
 const SEGS = {rest:'restaurante',beleza:'salão/estética',serv:'prestador de serviços',saude:'clínica/consultório',loja:'loja',outro:'negócio'};
 const Q = {
   q1:{t:'Qual é o seu tipo de negócio?',opts:[
     ['rest','🍽️ Restaurante / lanchonete'],['beleza','💇 Beleza / estética / barbearia'],
     ['serv','🔧 Serviços (reforma, assistência…)'],['saude','🏥 Saúde (clínica, consultório)'],
     ['loja','🛍️ Loja / comércio'],['outro','✏️ Outro']],
-    fb:v=>`Boa. Já entregamos sites pra <b>${SEGS[v]}s</b> — você vai ver um exemplo no final.`},
+    fb:v=>`Boa. Já atendemos <b>${SEGS[v]}s</b> — daqui a pouco te mostro resultado real desse mundo.`},
   q2:{t:'Hoje, quando alguém pesquisa seu negócio, o que encontra?',opts:[
     ['nada','Nada — não tenho site'],['insta','Só Instagram / WhatsApp'],
     ['ruim','Um site velho / que eu mesmo fiz e não gosto'],['bom','Um site bom e atualizado']],
@@ -283,72 +290,103 @@ const Q = {
       pesq:'Sem pressa — o diagnóstico é seu, use quando fizer sentido.'}[v])}
 };
 
-// ---- telas narrativas (cases reais — números de 13/08/2026, ver funil-v2-narrativo.md) ----
+// ---- carta de vendas (2 telas de leitura) + menu ----
 const STORIES = {
-  story_intro:{
-    kicker:'Pulso · Apresentação',
+  leitura1:{
+    kicker:'Iceberg · Quem somos',
     render:()=>`
-      <h1 style="font-size:1.5rem">${esc(A.nome)}, a Pulso é uma operação de marketing e IA</h1>
-      <p class="sub">Construímos a presença digital de negócios locais e levamos clientes até eles —
-      com uma diferença: <b>velocidade</b>. Site profissional no ar em 48 horas. Campanha rodando na
-      primeira semana. Resultado medido em dias, não em trimestres.</p>
-      <p class="sub" style="margin-bottom:0">A seguir, casos reais (com números reais) de quem deu o
-      primeiro passo com a gente. 👇</p>`
+      <h1 style="font-size:1.45rem">${esc(A.nome)}, prazer — somos a Iceberg.</h1>
+      <p class="story-body">Agência de marketing, tráfego pago e inteligência artificial. Há <b>6 anos</b>
+      fazemos a mesma coisa, do mesmo jeito: <b>serviço honesto, preço baixo e transparência total</b>.</p>
+      <p class="story-body">Sem contrato de 12 meses. Sem taxa escondida. Sem métrica maquiada.
+      Você vê o que foi investido, o que voltou — e decide se continua.</p>
+      <p class="story-body">E tem uma coisa que a gente faz diferente de todo mundo: <b>velocidade</b>.</p>`,
+    trackName:'leitura_quem_somos'
   },
-  story_hanna:{
-    kicker:'Caso real · Eficiência', big:'R$18,18', bigSuffix:'por conversa de cliente no WhatsApp',
+  leitura2:{
+    kicker:'Iceberg · Como funciona',
     render:()=>`
-      <p class="story-body">Este é um estúdio de tatuagem parceiro nosso. Verba enxuta, Google Ads bem configurado.</p>
-      <p class="story-body">Com <b>R$400 investidos</b>, chegaram <b>21 conversas</b> de clientes interessados
-      direto no WhatsApp.</p>
-      <p class="story-body">Não é mágica: é anúncio certo + um destino profissional pra onde mandar o clique.</p>`,
-    footnote:true, trackName:'story_hanna'
+      <h1 style="font-size:1.45rem">Resultado medido em dias, não em trimestres.</h1>
+      <p class="story-body">O método é simples:</p>
+      <ul class="menu-list">
+        <li><b>Site profissional no ar em 48 horas</b> — você aprova o texto antes</li>
+        <li><b>Campanha rodando na primeira semana</b></li>
+        <li><b>Conversas de clientes caindo direto no seu WhatsApp</b></li>
+        <li><b>Relatório transparente</b> — investido, retorno, custo por cliente</li>
+      </ul>
+      <p class="story-body" style="margin-top:.8rem">Por trás, um time completo: sites, tráfego pago,
+      agente de IA no WhatsApp, automação, CRM e design.</p>`,
+    trackName:'leitura_metodo'
   },
-  story_garage:{
-    kicker:'Caso real · Consistência', big:'R$12,78', bigSuffix:'na melhor campanha, por conversa',
+  // ---- comprovação (pós-opt-in): números reais + prints reconstruídos do WhatsApp ----
+  proof_gustavo:{
+    kicker:'Comprovação · Clínica em Brasília', big:'261', bigSuffix:'conversas de pacientes em 4 semanas de campanha',
     render:()=>`
-      <p class="story-body">Esse cliente tem uma conta rodando com a gente há meses.</p>
-      <p class="story-body">A melhor campanha girou a <b>R$12,78 por conversa</b>. No total do período,
-      foram <b>R$10,2 mil investidos</b> e centenas de conversas de clientes geradas — uma conta de
-      longo prazo, não um pico isolado.</p>
-      <p class="story-body">É o tipo de ritmo que se constrói com consistência, não com sorte.</p>`,
-    footnote:true, trackName:'story_garage'
+      <p class="story-body">Uma das nossas assessorias atende um médico em Brasília. A campanha dele
+      está no ar há <b>4 semanas</b>: <b>261 pessoas</b> chamaram no WhatsApp da clínica —
+      <b>69 só na primeira semana</b> — e <b>194 conversas chegaram em agendamento</b>.</p>
+      <div class="wa-chat">
+        <div class="wa-head"><div class="wa-avatar">CL</div><div><div class="wa-title">Clínica · WhatsApp</div><div class="wa-sub">online</div></div></div>
+        <div class="wa-body">
+          <div class="wa-msg wa-out">Está agendado para 18/08 às 10:20 em Águas Claras<span class="wa-time">12/08 ✓✓</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Paciente</div>Agendado !<span class="wa-time">12/08</span></div>
+          <div class="wa-msg wa-out">Está agendada para terça-feira (18/08) às 10:40 em Águas Claras<span class="wa-time">12/08 ✓✓</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Paciente</div>Agendada<span class="wa-time">12/08</span></div>
+        </div>
+        <div class="wa-caption">mensagens reais — pacientes anonimizados</div>
+      </div>`,
+    footnote:true, trackName:'proof_gustavo'
   },
-  story_fabiane:{
-    kicker:'Caso real · Velocidade de entrega', big:'1 semana', bigSuffix:'do zero ao protótipo',
+  proof_numeros:{
+    kicker:'Comprovação · Custo por cliente', big:'R$12 a R$18', bigSuffix:'por conversa de cliente no WhatsApp',
     render:()=>`
-      <p class="story-body">Não é só anúncio. A Fabiane, do IIBPR, precisava de um aplicativo.</p>
-      <p class="story-body">Prometemos o protótipo em <b>1 semana</b>. A reação dela foi:</p>
-      <p class="story-quote">"Sério? Funcionando no Celular?"</p>
-      <p class="story-body">O app foi entregue dias depois. É esse o ritmo que IA + processo bem
-      montado entrega.</p>`,
-    footnote:true, trackName:'story_fabiane'
+      <p class="story-body">Estúdio de tatuagem: <b>R$400 investidos → 21 conversas</b> de clientes
+      (R$18,18 cada).</p>
+      <p class="story-body">Loja parceira, conta de longo prazo: melhor campanha a <b>R$12,78 por
+      conversa</b>, centenas de conversas geradas.</p>
+      <p class="story-body">Evento de instituto parceiro: <b>36 ingressos vendidos a R$113 cada</b>
+      em campanha curta.</p>
+      <p class="story-body">Investimento enxuto, retorno medido. É assim que trabalhamos.</p>`,
+    footnote:true, trackName:'proof_numeros'
   },
-  story_iibpr:{
-    kicker:'Caso real · Campanha curta', big:'36', bigSuffix:'ingressos vendidos',
+  proof_whats:{
+    kicker:'Comprovação · O que os clientes dizem',
     render:()=>`
-      <p class="story-body">Mesmo cliente, outro objetivo: vender ingresso pra um evento.</p>
-      <p class="story-body">Campanha curta, <b>R$4.076 investidos</b>, <b>36 ingressos vendidos</b> —
-      <b>R$113 por venda</b>.</p>
-      <p class="story-body">Resultado rápido, medido, sem enrolação.</p>`,
-    footnote:true, trackName:'story_iibpr'
+      <div class="wa-chat">
+        <div class="wa-head"><div class="wa-avatar">IC</div><div><div class="wa-title">Grupos de clientes · WhatsApp</div><div class="wa-sub">mensagens reais</div></div></div>
+        <div class="wa-body">
+          <div class="wa-msg wa-in"><div class="wa-name">Dra. Lara</div>foi puramente fruto do trabalho de vcs! Ela viu e quis o contato! … indiquei muito forte mesmo!<span class="wa-time">24/07</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Dra. Genésia</div>Eu amei! Gostei das imagens e das artes<span class="wa-time">06/08</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Dr. Eduardo</div>Ficou ótimo! Valeu🫱🏻‍🫲🏽<span class="wa-time">05/08</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Dr. Luiz</div>Beleza! Ficou ótimo<span class="wa-time">04/08</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Vitor · Expoente</div>Só pra agradecer aí pelo trabalho essa manhã! Foi bom dms<span class="wa-time">05/08</span></div>
+          <div class="wa-msg wa-in"><div class="wa-name">Fabiane · IIBPR</div>Sério? Funcionando no Celular?<span class="wa-time">31/07</span></div>
+        </div>
+        <div class="wa-caption">a última é a reação da Fabiane quando dissemos que o app dela ficaria pronto em 1 semana — e ficou</div>
+      </div>`,
+    trackName:'proof_whats'
   },
-  story_depoimentos:{
-    kicker:'Quem já trabalha com a gente',
+  proof_sites:{
+    kicker:'Comprovação · Entregas reais',
     render:()=>`
-      <div class="quote-card"><p class="story-quote">"Só pra agradecer aí pelo trabalho essa manhã!
-      Foi bom dms…"</p><p class="quote-who">Vitor — Expoente · 05/08</p></div>
-      <div class="quote-card"><p class="story-quote">"foi puramente fruto do trabalho de vcs! Ela viu
-      e quis o contato!… indiquei muito forte mesmo!"</p><p class="quote-who">Dra. Lara · 24/07</p></div>`,
-    trackName:'story_depoimentos'
+      <p class="story-body"><b>Tangível assim:</b> páginas e sistemas que estão no ar agora, entregues
+      pelas nossas assessorias.</p>
+      <div class="showcase">
+        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/print-genesia-mobile.png" alt="Página da Dra. Genésia"><div class="phone-label">Dra. Genésia — página no ar</div></div>
+        <div class="phone-frame"><div class="phone-notch"></div><img src="assets/print-assessoriapulso-mobile.png" alt="Site da assessoria de saúde"><div class="phone-label">Assessoria de saúde — site próprio</div></div>
+      </div>
+      <p class="story-body">Fora <b>dezenas de sites</b> entregues pra restaurantes, estúdios e
+      prestadores de serviço. O próximo pode ser o seu — <b>em 48 horas</b>.</p>`,
+    trackName:'proof_sites'
   }
 };
 
 function buildFlow(){
-  // branching: quem tem site bom pula a P4 (destino do clique)
-  flow = ['story_intro','q1','q2','story_hanna','story_garage','q3'];
+  // fase 1: quiz qualifica → carta de vendas gera interesse → menu fecha o "sim"
+  flow = ['q1','q2','q3'];
   if(A.q2 !== 'bom') flow.push('q4');
-  flow.push('story_fabiane','story_iibpr','q5','q6','story_depoimentos','menu');
+  flow.push('q5','q6','leitura1','leitura2','menu');
+  proofFlow = ['proof_gustavo','proof_numeros','proof_whats','proof_sites'];
 }
 
 function start(){ track('quiz_start'); show('s-name'); }
@@ -357,20 +395,23 @@ function submitName(e){
   const v = document.getElementById('f-nome-only').value.trim();
   A.nome = v || 'você';
   track('name_captured',{nome:A.nome});
-  buildFlow(); idx=0; hist=[];
+  buildFlow(); phase=1; idx=0; hist=[];
   show('s-quiz'); render();
   return false;
 }
 function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 
+function curFlow(){ return phase===1 ? flow : proofFlow; }
+function totalSteps(){ return flow.length + 1 + proofFlow.length + 1; } // +captura +resultado
+function stepsDone(){ return phase===1 ? idx : flow.length + 1 + idx; }
+
 function render(){
-  const step = flow[idx];
-  const total = flow.length + 1; // + captura
-  document.getElementById('qcount').textContent = `Etapa ${idx+1} de ${total}`;
-  const pct = Math.round((idx/total)*100);
+  const step = curFlow()[idx];
+  document.getElementById('qcount').textContent = phase===1 ? `Etapa ${idx+1} de ${flow.length+1}` : 'Comprovação';
+  const pct = Math.round((stepsDone()/totalSteps())*100);
   document.getElementById('qpct').textContent = `Diagnóstico ${pct}% pronto`;
   document.getElementById('qbar').style.width = pct+'%';
-  document.getElementById('btnBack').style.visibility = idx===0?'hidden':'visible';
+  document.getElementById('btnBack').style.visibility = (phase===1 && idx>0)?'visible':'hidden';
 
   const isQuestion = Object.prototype.hasOwnProperty.call(Q,step);
   document.getElementById('meterrow').style.display = isQuestion ? 'flex' : 'none';
@@ -385,7 +426,7 @@ function render(){
 
 function renderQuestion(qid, body){
   const q = Q[qid];
-  const qnum=document.createElement('div'); qnum.className='qnum'; qnum.textContent=`Diagnóstico Pulso · ${qid.toUpperCase()}`;
+  const qnum=document.createElement('div'); qnum.className='qnum'; qnum.textContent=`Diagnóstico Iceberg · ${qid.toUpperCase()}`;
   const qtitle=document.createElement('div'); qtitle.className='qtitle'; qtitle.textContent=q.t;
   const opts=document.createElement('div'); opts.className='opts';
   let optList = q.opts.slice();
@@ -400,7 +441,7 @@ function renderQuestion(qid, body){
 
 function renderStory(key, body){
   const s = STORIES[key];
-  if(s.trackName) track(s.trackName); else track(key);
+  track(s.trackName||key);
   const kicker=document.createElement('div'); kicker.className='qnum'; kicker.textContent=s.kicker;
   body.appendChild(kicker);
   if(s.big){
@@ -409,10 +450,10 @@ function renderStory(key, body){
     body.appendChild(card);
   }
   const content=document.createElement('div'); content.className='story-content';
-  content.innerHTML = s.render(); // conteúdo estático (nome já escapado via esc() dentro do render)
+  content.innerHTML = s.render(); // conteúdo estático; nome sempre via esc()
   body.appendChild(content);
   if(s.footnote){
-    const fn=document.createElement('p'); fn.className='story-footnote'; fn.textContent='números reais de clientes — jul/2026';
+    const fn=document.createElement('p'); fn.className='story-footnote'; fn.textContent='números reais de clientes das nossas assessorias — jul–ago/2026';
     body.appendChild(fn);
   }
   const btn=document.createElement('button'); btn.className='btn'; btn.style.marginTop='1rem';
@@ -421,21 +462,16 @@ function renderStory(key, body){
 }
 
 function renderMenu(body){
-  const kicker=document.createElement('div'); kicker.className='qnum'; kicker.textContent='O que fazemos por negócios locais';
+  const kicker=document.createElement('div'); kicker.className='qnum'; kicker.textContent='Iceberg · A pergunta que importa';
   const content=document.createElement('div'); content.className='story-content';
   content.innerHTML = `
-    <h1 style="font-size:1.3rem">O site em 48h é só o primeiro passo, ${esc(A.nome)}.</h1>
-    <p class="sub" style="margin-bottom:.6rem">Time completo por trás:</p>
-    <ul class="menu-list">
-      <li>Criação de Sites (48h)</li><li>Tráfego Pago</li><li>Agente de IA no WhatsApp</li>
-      <li>Automação</li><li>CRM</li><li>Relatórios ao vivo</li>
-    </ul>
-    <p class="qtitle" style="margin-top:1rem">Quer isso trabalhando pro seu negócio, ${esc(A.nome)}?</p>`;
+    <p class="qtitle" style="margin-top:.2rem">Quer isso trabalhando pro seu negócio, ${esc(A.nome)}?</p>
+    <p class="story-body">Site em 48h, campanha na primeira semana e conversas de clientes no seu WhatsApp.</p>`;
   body.appendChild(kicker); body.appendChild(content);
   const btnSim=document.createElement('button'); btnSim.className='btn'; btnSim.style.marginTop='1rem';
-  btnSim.textContent='Sim, quero'; btnSim.onclick=()=>{ track('menu_sim'); next('menu'); };
+  btnSim.textContent='Sim, quero'; btnSim.onclick=()=>{ track('menu_sim'); enterCapture(); };
   const btnSaber=document.createElement('button'); btnSaber.className='btn btn-secondary'; btnSaber.style.marginTop='.6rem';
-  btnSaber.textContent='Quero saber mais'; btnSaber.onclick=()=>{ track('menu_saber'); next('menu'); };
+  btnSaber.textContent='Quero ver os resultados primeiro'; btnSaber.onclick=()=>{ track('menu_saber'); enterCapture(); };
   body.appendChild(btnSim); body.appendChild(btnSaber);
 }
 
@@ -446,27 +482,35 @@ function pick(qid,v,btn){
   document.querySelectorAll('.opt').forEach(o=>o.classList.remove('picked'));
   btn.classList.add('picked');
   const fb=document.getElementById('feedback');
-  // conteúdo estático definido acima — sem input do usuário
   fb.innerHTML = typeof Q[qid].fb==='function'?Q[qid].fb(v):Q[qid].fb;
   fb.classList.add('show');
   updateMeter();
-  setTimeout(()=>{ advancing=false; next(qid); }, 1600);   // feedback ~1,6s, avanço automático
+  setTimeout(()=>{ advancing=false; next(qid); }, 1600);
 }
 function next(step){
-  hist.push(idx);
-  if(step==='q2') buildFlow();          // ramo pode mudar o fluxo (P4)
-  if(idx < flow.length-1){ idx++; render(); }
-  else { track('quiz_capture_view'); enterCapture(); }
+  if(phase===1){
+    hist.push(idx);
+    if(step==='q2') buildFlow();
+    if(idx < flow.length-1){ idx++; render(); }
+    else enterCapture();
+  } else {
+    if(idx < proofFlow.length-1){ idx++; render(); }
+    else result(A.nome);
+  }
 }
-function goBack(){ if(hist.length){ idx=hist.pop(); render(); } }
+function goBack(){ if(phase===1 && hist.length){ idx=hist.pop(); render(); } }
 
 function enterCapture(){
-  document.getElementById('cap-title').textContent = `${A.nome}, deixa teu WhatsApp que a gente te chama em poucos minutos com o diagnóstico`;
-  document.getElementById('cap-sub').textContent = 'Sem call chata, sem enrolação — só o resultado e o plano do primeiro passo.';
+  track('quiz_capture_view');
+  const pct = Math.round(((flow.length)/totalSteps())*100);
+  document.getElementById('cap-pct').textContent = `Diagnóstico ${pct}% pronto`;
+  document.getElementById('cap-bar').style.width = pct+'%';
+  document.getElementById('cap-title').textContent = `${A.nome}, deixa teu WhatsApp que a gente te chama em poucos minutos.`;
+  document.getElementById('cap-sub').textContent = 'Antes do teu diagnóstico, vou te mostrar — com prints e números reais — o que entregamos nas últimas semanas.';
   show('s-capture');
 }
 
-// ---- score (régua do funil-quiz.md) ----
+// ---- score ----
 function score(){
   if(A.q2==='bom') return 74;
   let s=20;
@@ -481,50 +525,43 @@ function submitLead(e){
   e.preventDefault();
   track('Lead',{nome:A.nome});   // versão real: POST → webhook :3020 (respostas + score + UTMs)
   show('s-calc');
-  const msgs=['Cruzando suas respostas com 63 sites entregues','Analisando seu segmento…','Montando seu diagnóstico…'];
-  let i=0; const t=setInterval(()=>{ i=(i+1)%msgs.length; document.getElementById('calcmsg').textContent=msgs[i]; },900);
-  setTimeout(()=>{ clearInterval(t); result(A.nome); }, 2600);
+  setTimeout(()=>{ phase=2; idx=0; show('s-quiz'); render(); }, 1800);
   return false;
 }
 
 function result(nome){
   const s=score(), seg=SEGS[A.q1]||'negócio';
   show('s-result'); track('quiz_result',{score:s});
-  // score animado
   let cur=0; const el=document.getElementById('r-score');
   const step=()=>{ cur+=Math.ceil(s/40); if(cur>=s)cur=s; el.textContent=cur; if(cur<s)requestAnimationFrame(step); };
   requestAnimationFrame(step);
   document.getElementById('r-track').style.width=s+'%';
   document.getElementById('r-label').textContent=LABELS(s);
-  // espelho das respostas (nome escapado — input do usuário)
   const meta={'5-10':'5 a 10','10-30':'10 a 30','30+':'30+','perder':'parar de perder'}[A.q5]||'mais';
   const dor = A.q2==='bom' ? 'seu site é bom — mas <b>pouca gente certa chega nele</b>'
     : A.q2==='ruim' ? '<b>seu site atual está te custando cliente</b>'
     : 'hoje <b>não tem para onde mandar quem clica num anúncio seu</b>';
   document.getElementById('r-mirror').innerHTML =
     `${nome?`<b>${esc(nome)}</b>, v`:'V'}ocê tem um(a) <b>${seg}</b>, quer <b>${meta} clientes novos por mês</b> — e ${dor}.`;
-  // ofertas: site 48h = primeiro passo (vem primeiro); combo = caminho dos cases que você viu
-  // só combo se site bom; só avulso se "não pretendo anunciar"; senão as duas
   const box=document.getElementById('r-offers'); box.innerHTML='';
   const site=`<div class="offer"><span class="tag">primeiro passo</span><h3>Site Profissional 48h</h3><div class="price">R$500</div>
     <ul><li>No ar em 48 horas</li><li>Texto aprovado por você antes</li><li>3 rodadas de ajuste</li><li>Botão de WhatsApp direto</li></ul></div>`;
-  const combo=`<div class="offer hot"><span class="tag">caminho dos cases que você viu</span><h3>Site + Anúncios 3 meses</h3>
+  const combo=`<div class="offer hot"><span class="tag">caminho dos resultados que você viu</span><h3>Site + Anúncios 3 meses</h3>
     <div class="price">R$900<small>/mês ×3</small></div>
-    <ul><li>Tudo do site 48h</li><li>Gestão de anúncios Meta</li><li>Reunião quinzenal</li><li>Relatório mensal simples</li></ul></div>`;
+    <ul><li>Tudo do site 48h</li><li>Gestão de anúncios</li><li>Reunião quinzenal</li><li>Relatório transparente</li></ul></div>`;
   if(A.q2==='bom') box.innerHTML=combo;
   else if(A.q3==='nunca') box.innerHTML=site;
   else box.innerHTML=site+combo;
-  // CTA
   const zap='5561900000000'; // PLACEHOLDER — trocar pelo número real
-  const txt=encodeURIComponent(`Oi! Fiz o diagnóstico (nota ${s}/100) e quero agendar a conversa de 20min.`);
+  const txt=encodeURIComponent(`Oi! Fiz o diagnóstico (nota ${s}/100) e quero dar o primeiro passo.`);
   const cta=document.getElementById('r-cta');
   if(A.q6==='pesq'){ cta.textContent='Receber meu diagnóstico no WhatsApp';
-    document.getElementById('r-ctasub').textContent='Sem call, sem pressão — só o diagnóstico e o exemplo do seu segmento.'; }
+    document.getElementById('r-ctasub').textContent='Sem call, sem pressão — só o diagnóstico completo.'; }
   cta.href=`https://wa.me/${zap}?text=${txt}`;
   cta.onclick=()=>track('Schedule',{score:s});
 }
 function updateMeter(){
-  const answered=Object.keys(A).length;
+  const answered=Object.keys(A).filter(k=>k!=='nome').length;
   const s=answered? score(): 20;
   const m=document.getElementById('meterbar');
   m.style.width=Math.max(8,s)+'%';
